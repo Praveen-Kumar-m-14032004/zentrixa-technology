@@ -1,0 +1,112 @@
+[
+  {
+    "name": "inquiry",
+    "fields": [
+      {
+        "name": "Name",
+        "type": "text",
+        "description": "Name of the person making the inquiry",
+        "options": null
+      },
+      {
+        "name": "Email",
+        "type": "text",
+        "description": "Email address of the inquirer",
+        "options": null
+      },
+      {
+        "name": "Service",
+        "type": "text",
+        "description": "Specific service or topic interested in",
+        "options": null
+      },
+      {
+        "name": "Message",
+        "type": "text",
+        "description": "Content of the inquiry message",
+        "options": null
+      },
+      {
+        "name": "Date",
+        "type": "datetime",
+        "description": "Date and time of the inquiry",
+        "options": null
+      },
+      {
+        "name": "Category",
+        "type": "text",
+        "description": "Type of inquiry (Project or Workshop)",
+        "options": [
+          "Project",
+          "Workshop"
+        ]
+      },
+      {
+        "name": "AttachmentInfo",
+        "type": "text",
+        "description": "Information about files or voice notes the user intends to send",
+        "options": null
+      },
+      {
+        "name": "Duration",
+        "type": "text",
+        "description": "Duration of the workshop (Half Day, 1 Day, 2 Days)",
+        "options": [
+          "Half Day",
+          "1 Day",
+          "2 Days"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "client_review",
+    "fields": [
+      {
+        "name": "Name",
+        "type": "text",
+        "description": "Name of the reviewer",
+        "options": null
+      },
+      {
+        "name": "Role",
+        "type": "text",
+        "description": "Job title, Company, or College/Department",
+        "options": null
+      },
+      {
+        "name": "Content",
+        "type": "text",
+        "description": "The review text",
+        "options": null
+      },
+      {
+        "name": "Rating",
+        "type": "number",
+        "description": "Rating from 1 to 5",
+        "options": null
+      },
+      {
+        "name": "Date",
+        "type": "datetime",
+        "description": "Date of the review",
+        "options": null
+      },
+      {
+        "name": "Category",
+        "type": "text",
+        "description": "Type of review (Project or Workshop)",
+        "options": [
+          "Project",
+          "Workshop"
+        ]
+      },
+      {
+        "name": "IsHidden",
+        "type": "bool",
+        "description": "Set to true to hide this review from the public website",
+        "options": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zentrixa | Transforming Ideas into Scalable Digital Solutions</title>
+    <meta name="description" content="Zentrixa is a StartupTN Registered IT Company Delivering Web, Mobile & Digital Innovation.">
+    <meta name="keywords" content="IT Company, Web Development, Mobile App, StartupTN, Zentrixa, Digital Solutions">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Zentrixa | Transforming Ideas into Scalable Digital Solutions">
+    <meta property="og:description" content="Zentrixa is a StartupTN Registered IT Company Delivering Web, Mobile & Digital Innovation.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zentrixa | Transforming Ideas into Scalable Digital Solutions">
+    <meta name="twitter:description" content="Zentrixa is a StartupTN Registered IT Company Delivering Web, Mobile & Digital Innovation.">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+    <script>const ChartJS = window.Chart;</script>
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary: #00f0ff; /* Neon Cyan */
+            --secondary: #7000ff; /* Neon Purple */
+            --bg-dark: #050507;
+            --bg-card: #0f0f16;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+    }
+
+    @layer base {
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050507; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff; 
+        }
+    }
+
+    @layer components {
+        .btn {
+            @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden;
+        }
+        .btn-primary {
+            @apply bg-cyan-500 text-black hover:bg-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)];
+        }
+        .btn-outline {
+            @apply border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 shadow-[0_0_10px_rgba(6,182,212,0.1)];
+        }
+        .glass-card {
+            @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+        }
+        .section-padding {
+            @apply py-24 px-4 md:px-8 lg:px-16;
+        }
+        .heading-gradient {
+            @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-500;
+        }
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+        
+        /* Premium Effects */
+        .spotlight-card {
+            @apply relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)];
+        }
+        .spotlight-card::before {
+            content: '';
+            @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+        }
+        .spotlight-card:hover::before {
+            @apply opacity-100;
+        }
+    }
+    
+    @layer utilities {
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: float 6s ease-in-out 3s infinite;
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 3s infinite;
+        }
+        .animate-gradient-xy {
+            background-size: 200% 200%;
+            animation: gradient-xy 6s ease infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(6,182,212,0.2); }
+            50% { box-shadow: 0 0 25px rgba(6,182,212,0.6); }
+        }
+        @keyframes gradient-xy {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    }
+    </style>
+
+    <!--
+    ============================================================
+      API BRIDGE — replaces trickle SDK with your Express server
+      All components call trickleCreateObject / trickleListObjects
+      etc. exactly as before; these functions now hit /api/*
+    ============================================================
+    -->
+    <script>
+        // ── Base URL: change to your deployed domain in production ──
+        const API_BASE = 'http://localhost:3000';
+
+        /**
+         * POST /api/objects/:type
+         * Creates a new record and returns { objectId, objectData }
+         */
+        async function trickleCreateObject(type, data) {
+            const res = await fetch(`${API_BASE}/api/objects/${type}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.message || `Failed to create ${type}`);
+            }
+            return res.json();   // { objectId, objectData }
+        }
+
+        /**
+         * GET /api/objects/:type?limit=100&desc=true
+         * Returns { items: [{ objectId, objectData }, ...] }
+         */
+        async function trickleListObjects(type, limit = 100, desc = true) {
+            const res = await fetch(
+                `${API_BASE}/api/objects/${type}?limit=${limit}&desc=${desc}`
+            );
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.message || `Failed to fetch ${type}`);
+            }
+            return res.json();   // { items: [...] }
+        }
+
+        /**
+         * PUT /api/objects/:type/:id
+         * Updates an existing record; returns { objectId, objectData }
+         */
+        async function trickleUpdateObject(type, id, data) {
+            const res = await fetch(`${API_BASE}/api/objects/${type}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.message || `Failed to update ${type}/${id}`);
+            }
+            return res.json();
+        }
+
+        /**
+         * DELETE /api/objects/:type/:id
+         * Deletes a record; returns { success: true }
+         */
+        async function trickleDeleteObject(type, id) {
+            const res = await fetch(`${API_BASE}/api/objects/${type}/${id}`, {
+                method: 'DELETE'
+            });
+            if (!res.ok) {
+                const err = await res.json().catch(() => ({}));
+                throw new Error(err.message || `Failed to delete ${type}/${id}`);
+            }
+            return res.json();
+        }
+    </script>
+</head>
+<body class="relative">
+    <!-- Global Noise Overlay -->
+    <div class="fixed inset-0 z-[9999] pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    
+    <div id="root"></div>
+    <script type="text/babel" src="components/Navbar.js"></script>
+    <script type="text/babel" src="components/Hero.js"></script>
+    <script type="text/babel" src="components/About.js"></script>
+    <script type="text/babel" src="components/Tools.js"></script>
+    <script type="text/babel" src="components/ServiceModal.js"></script>
+    <script type="text/babel" src="components/Services.js"></script>
+    <script type="text/babel" src="components/Process.js"></script>
+    <script type="text/babel" src="components/ProjectDetailModal.js"></script>
+    <script type="text/babel" src="components/Portfolio.js"></script>
+    <script type="text/babel" src="components/Testimonials.js"></script>
+    <script type="text/babel" src="components/ReviewModal.js"></script>
+    <script type="text/babel" src="components/WhyChoose.js"></script>
+    <script type="text/babel" src="components/VoiceRecorder.js"></script>
+    <script type="text/babel" src="components/Contact.js"></script>
+    <script type="text/babel" src="components/Footer.js"></script>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>
