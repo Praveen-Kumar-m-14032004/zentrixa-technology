@@ -2,9 +2,9 @@
   "name": "zentrixa-technologies-main",
   "version": "1.0.0",
   "description": "",
-  "main": "admin.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests specified\"",
     "start": "node server.js"
   },
   "keywords": [],
