@@ -21,7 +21,7 @@ const path     = require('path');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 const PORT      = process.env.PORT      || 3000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/zentrixa';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://praveenkumarm14032004_db_user:lxlBZUC5M8z6YvBi@zentrixa.ij2hbjw.mongodb.net/Zentrixa?retryWrites=true&w=majority';
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 const app = express();
