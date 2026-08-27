@@ -924,7 +924,7 @@ app.use(
 
 mongoose
 
-    .connect(MONGO_URI)
+    .connect(MONGODB_URI)
 
     .then(() => {
 
