@@ -1,10 +1,11 @@
+
 {
   "name": "zentrixa-technologies-main",
   "version": "1.0.0",
-  "description": "",
+  "description": "Zentrixa Technologies website and admin backend",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"No tests specified\"",
+    "test": "echo \"No tests configured\"",
     "start": "node server.js"
   },
   "keywords": [],

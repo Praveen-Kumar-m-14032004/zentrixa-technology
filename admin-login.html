@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zentrixa Admin Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #050507;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4 text-white">
+
+    <div class="w-full max-w-md">
+        <div class="bg-[#0f0f16] border border-white/10 rounded-2xl p-8 shadow-2xl">
+
+            <div class="text-center mb-8">
+                <div class="mx-auto mb-4 w-14 h-14 rounded-xl bg-cyan-400 text-black flex items-center justify-center text-2xl font-bold">
+                    Z
+                </div>
+
+                <h1 class="text-3xl font-bold">Zentrixa Admin</h1>
+
+                <p class="text-gray-400 text-sm mt-2">
+                    Sign in to manage reviews and inquiries
+                </p>
+            </div>
+
+            <form id="loginForm" class="space-y-5">
+
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2">
+                        Username
+                    </label>
+
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        autocomplete="username"
+                        required
+                        class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 focus:border-cyan-400 outline-none"
+                    >
+                </div>
+
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2">
+                        Password
+                    </label>
+
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                        class="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/10 focus:border-cyan-400 outline-none"
+                    >
+                </div>
+
+                <button
+                    id="loginButton"
+                    type="submit"
+                    class="w-full py-3 rounded-lg bg-cyan-400 text-black font-bold hover:bg-cyan-300 transition"
+                >
+                    Login
+                </button>
+
+                <div
+                    id="error"
+                    class="hidden p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
+                ></div>
+
+            </form>
+
+            <div class="text-center mt-6">
+                <a
+                    href="/index.html"
+                    class="text-sm text-gray-500 hover:text-cyan-400"
+                >
+                    ← Back to website
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const button = document.getElementById('loginButton');
+        const errorBox = document.getElementById('error');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            errorBox.classList.add('hidden');
+            button.disabled = true;
+            button.textContent = 'Signing in...';
+
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({
+                        username: document.getElementById('username').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+
+                const data = await response.json().catch(() => ({}));
+
+                if (!response.ok) {
+                    throw new Error(
+                        data.message || 'Invalid username or password.'
+                    );
+                }
+
+                window.location.href = '/admin.html';
+
+            } catch (error) {
+                errorBox.textContent = error.message;
+                errorBox.classList.remove('hidden');
+
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Login';
+            }
+        });
+
+        fetch('/api/admin/me', {
+            credentials: 'same-origin'
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = '/admin.html';
+            }
+        })
+        .catch(() => {});
+    </script>
+
+</body>
+</html>
