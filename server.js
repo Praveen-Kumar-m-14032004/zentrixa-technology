@@ -25,10 +25,11 @@ const path = require('path');
 const crypto = require('crypto');
 
 // ─── Config ───────────────────────────────────────────────────────────────────
+// ─── Config ───────────────────────────────────────────────────────────────────
 
 const PORT = process.env.PORT || 3000;
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
@@ -42,24 +43,28 @@ const SESSION_MAX_AGE = 8 * 60 * 60 * 1000; // 8 hours
 
 // ─── Required Environment Variables ──────────────────────────────────────────
 
-if (!MONGO_URI) {
-    console.error('❌ MONGO_URI is not configured.');
+if (!MONGODB_URI) {
+    console.error('❌ MONGODB_URI is not configured.');
     console.error(
-        'Set MONGO_URI in Azure App Service Environment Variables.'
+        'Set MONGODB_URI in Azure App Service Environment Variables.'
     );
-
     process.exit(1);
 }
 
-if (!ADMIN_USERNAME || !ADMIN_PASSWORD || !SESSION_SECRET) {
-    console.error('❌ Admin authentication is not configured.');
-    console.error(
-        'Required: ADMIN_USERNAME, ADMIN_PASSWORD, SESSION_SECRET'
-    );
-
+if (!ADMIN_USERNAME) {
+    console.error('❌ ADMIN_USERNAME is not configured.');
     process.exit(1);
 }
 
+if (!ADMIN_PASSWORD) {
+    console.error('❌ ADMIN_PASSWORD is not configured.');
+    process.exit(1);
+}
+
+if (!SESSION_SECRET) {
+    console.error('❌ SESSION_SECRET is not configured.');
+    process.exit(1);
+}
 
 // ─── Express App ──────────────────────────────────────────────────────────────
 
